@@ -1,61 +1,189 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const DISCORD_URL = '#join';
-const INSTAGRAM_URL = 'https://instagram.com/silentwar.community';
 const EMAIL = 'silentwarcommunity@gmail.com';
+const INSTAGRAM_URL = 'https://instagram.com/silentwar.community';
+const ENLIST_URL = `mailto:${EMAIL}?subject=Enlist&body=I%20want%20in.`;
+
+const costs = [
+  'The hours you can’t sleep.',
+  'The relationships you can’t fix.',
+  'The man in the mirror you don’t recognize.',
+  'The years you keep losing to the same loop.',
+];
+
+const pillars = [
+  {
+    name: 'The Room',
+    tagline: 'The Brothers',
+    practices: [
+      { name: 'The Night Room', desc: 'Always-on voice channel. 9 PM to 3 AM. The room nobody wakes up to in your house.' },
+      { name: 'Daily Vent Space', desc: 'Text channel. No solutions, no fixing, no judgment. Just being heard.' },
+      { name: 'Daily Check-in', desc: 'Morning thread. One sentence. Just to say you’re still here.' },
+      { name: 'Letters From The Front', desc: 'Anonymous member confessions. Read, reply, recognize yourself.' },
+      { name: 'The Brother System', desc: 'New men paired with a brother who’s been here longer. You don’t walk in alone.' },
+    ],
+  },
+  {
+    name: 'The Work',
+    tagline: 'The Support',
+    practices: [
+      { name: 'Office Hours', desc: 'Monthly live AMA with rotating licensed coaches. Bring the question you’ve been carrying.' },
+      { name: 'The Cohort', desc: '6-week themed group coaching. Heartbreak. Grief. Father wounds. Pick your war.' },
+      { name: '1-on-1 Coach Sessions', desc: 'Officer tier only. Twice a month. Vetted, men-trained, no clipboard.' },
+      { name: 'The Oracle', desc: 'AI journaling companion trained on the brotherhood. The brother who’s awake when nobody else is.' },
+      { name: 'Q&A Board', desc: 'Async. Drop the question. The panel answers within 48 hours.' },
+    ],
+  },
+  {
+    name: 'The Rite',
+    tagline: 'The Rhythm',
+    practices: [
+      { name: 'The Sunday Reset', desc: 'Live group call. 9 PM EST. Close the week. Open the next one with brothers.' },
+      { name: 'The Wednesday Drop', desc: 'Journaling prompt + guided audio. Mid-week, when the silence gets loud.' },
+      { name: 'The Friday Cinematic', desc: 'Reel of the week + reflection. Built for the men who feel through screens first.' },
+      { name: 'The 30-Day Healing Path', desc: 'Gamified onboarding. Day 1 to Day 30. Rank earned. Token mailed.' },
+      { name: 'The Ranks', desc: 'Recruit. Soldier. Brother. Veteran. Lifer. Time-in is the only currency.' },
+    ],
+  },
+];
+
+const week = [
+  { day: 'Sunday — 9 PM EST', name: 'The Reset', desc: 'Live group call. Close the week. Speak it out loud with brothers.' },
+  { day: 'Monday', name: 'Letters From The Front', desc: 'A new anonymous letter drops. You read yours back at someone else.' },
+  { day: 'Wednesday', name: 'The Drop', desc: 'Journaling prompt + guided audio in your inbox. Mid-week reset.' },
+  { day: 'Friday', name: 'The Cinematic', desc: 'Reel of the week. Reflection. The thing that hits you and you don’t know why.' },
+  { day: 'Daily', name: 'Vent / Check-in / Night Room', desc: 'The channels never close. The room is always open.' },
+  { day: 'Monthly', name: 'Office Hours + Cohort Kickoff', desc: 'Coach AMA. New 6-week themed group launches.' },
+  { day: 'Quarterly', name: 'The Drop', desc: 'A piece of the brotherhood you wear. Tags. Patches. Tees. Capped quantity.' },
+  { day: 'Yearly', name: 'The Summit', desc: 'In person. Capped at 100. Officer tier first dibs. The lore-making event.' },
+];
 
 const fragments = [
   { text: 'She left, and I had to rewire everything I thought love was.', meta: 'Fragment 01' },
-  { text: 'Nobody noticed I disappeared. That\u2019s how I knew.', meta: 'Fragment 02' },
-  { text: 'You don\u2019t even want her back. You just want the chaos to stop.', meta: 'Fragment 03' },
-  { text: 'The hardest part wasn\u2019t losing her. It was meeting the man I became without her.', meta: 'Fragment 04' },
+  { text: 'Nobody noticed I disappeared. That’s how I knew.', meta: 'Fragment 02' },
+  { text: 'You don’t even want her back. You just want the chaos to stop.', meta: 'Fragment 03' },
+  { text: 'The hardest part wasn’t losing her. It was meeting the man I became without her.', meta: 'Fragment 04' },
   { text: 'I learned to smile in rooms where I was breaking apart.', meta: 'Fragment 05' },
-  { text: 'I wasn\u2019t weak. I just had nobody to tell.', meta: 'Fragment 06' },
+  { text: 'I wasn’t weak. I just had nobody to tell.', meta: 'Fragment 06' },
+];
+
+const letters = [
+  {
+    body: 'They asked how I was. I said good. Then I sat in my car for forty minutes before going inside.',
+    sender: 'B., Recruit, 28, Atlanta',
+  },
+  {
+    body: 'Six months in and I haven’t deleted her photos. I think I’m afraid I’ll forget what she looked like before everything went bad.',
+    sender: 'D., Soldier, 31, Toronto',
+  },
+  {
+    body: 'I never grieved my dad. He was just gone. I’m 34 now and I cry at car commercials and don’t know why.',
+    sender: 'M., Brother, 34, Chicago',
+  },
+  {
+    body: 'Last Tuesday I almost didn’t get out of bed. Then someone in the Night Room said my name. I got up.',
+    sender: 'Anonymous, Soldier, 26, Denver',
+  },
 ];
 
 const tiers = [
   {
-    name: 'Free Community',
-    tagline: 'Open Door',
-    price: '$0',
-    period: '',
-    featured: false,
-    cta: 'Walk Through',
-    features: [
-      'Vent space + daily check-ins',
-      'Reels, scripts, and free resources',
-      'A room of brothers, no judgment',
-      'Start-here guide + welcome',
-    ],
-  },
-  {
     name: "Brothers' Circle",
-    tagline: 'Inner Room',
-    price: '$25',
+    tagline: 'The Brotherhood',
+    price: '$29',
     period: '/month',
-    featured: true,
+    featured: false,
     cta: 'Step In',
     features: [
-      'Weekly group calls',
-      'Journaling prompts + guided audio',
+      'Everything in Recon (free tier)',
+      'Weekly facilitated brotherhood circle (8–12 men)',
+      'The Sunday Reset live group call',
+      'The Wednesday Drop — journaling + audio',
+      'The Friday Cinematic',
+      'The Night Room access (9PM–3AM EST)',
       'Private chat with the brothers',
-      'Exclusive guides & drops',
     ],
   },
   {
     name: 'Silent Army',
-    tagline: 'Front Line',
-    price: '$50',
+    tagline: 'Brotherhood + Support',
+    price: '$79',
     period: '/month',
-    featured: false,
+    featured: true,
     cta: 'Enlist',
     features: [
-      '1-on-1 mentorship & coaching',
-      'Lifestyle Lab access',
-      'Behind-the-war footage',
-      'Exclusive product drops',
+      'Everything in Brothers’ Circle',
+      'Monthly Office Hours with licensed coaches',
+      '6-week themed cohorts (heartbreak, grief, fatherhood, addiction)',
+      'Async Q&A Board with the panel',
+      'The Oracle — AI journaling companion, 24/7',
+      'The Vault — cinematic clip + audio library',
+      'The Lifestyle Lab',
+      'Year-1 enlistment kit (dog tag + welcome drop)',
     ],
+  },
+  {
+    name: 'Silent Officer',
+    tagline: 'Brotherhood + Support + 1:1',
+    price: '$149',
+    period: '/month',
+    featured: false,
+    cta: 'Take Command',
+    features: [
+      'Everything in Silent Army',
+      '2x/month 1-on-1 with a vetted men-trained coach',
+      'Smaller mastermind cohort (capped)',
+      'Direct line to the founders',
+      'Priority access to The Summit',
+      'Officer-tier exclusive drops + early access',
+      'Capped enrollment — spots open quarterly',
+    ],
+  },
+];
+
+const forList = [
+  'Men 22–40 carrying heartbreak, grief, loneliness, or childhood wounds.',
+  'Men who watch the reels at 2 AM and feel seen by strangers on the internet.',
+  'Men who’d never use the words “men’s circle” but need exactly that.',
+  'Men ready to feel before they fix.',
+];
+
+const notForList = [
+  'Hustle culture. Red-pill. Top G energy. We’re not that lane.',
+  'Men looking for a therapy replacement — we’re brotherhood + coaching, not clinical treatment.',
+  'Men looking for a quick fix. This is rhythm, not magic.',
+  'Men who can’t do anonymous yet — come back when you can.',
+];
+
+const faqs = [
+  {
+    q: 'Is this therapy?',
+    a: 'No. The Silent War is a brotherhood with licensed coaches and monthly clinical office hours — psychoeducational support, not treatment. If you’re in crisis, we’ll route you to vetted clinical care via our partner network (Grow Therapy, Alma).',
+  },
+  {
+    q: 'What if I’m too far gone?',
+    a: 'Then this is exactly where you belong. The Night Room is always open. So is the door. If you’re in immediate crisis, please call 988 (US) or your local crisis line first — then come back when you’re safe.',
+  },
+  {
+    q: 'What if I don’t feel like a “sad guy”?',
+    a: 'This isn’t a niche for sad guys. It’s a niche for men. Every man fights silently. We just stopped pretending we don’t.',
+  },
+  {
+    q: 'Can I cancel anytime?',
+    a: 'Yes. No locks. No retention emails. The brotherhood holds men because they want to be held — not because they have to.',
+  },
+  {
+    q: 'Are the coaches licensed?',
+    a: 'Office Hours rotate licensed clinicians (psychoeducational AMAs, not 1:1 therapy). Group coaching cohorts and 1-on-1s are led by vetted, men-trained coaches — supportive, not clinical.',
+  },
+  {
+    q: 'What if I don’t talk much?',
+    a: 'Most don’t at first. The Night Room is built for that. Show up. Listen. Leave. Talk when you’re ready. Half the healing is just being in the room.',
+  },
+  {
+    q: 'Is this only for men?',
+    a: 'Yes. The Silent War exists because men, statistically and culturally, suffer alone. We’re built to fix that for them. Other communities exist for everyone else.',
   },
 ];
 ---
@@ -65,9 +193,10 @@ const tiers = [
     <a href="#top" class="nav-brand">The Silent War</a>
     <div class="nav-links">
       <a href="#war">The War</a>
-      <a href="#brotherhood">Brotherhood</a>
-      <a href="#tiers">Ranks</a>
-      <a href="#join">Join</a>
+      <a href="#pillars">Inside</a>
+      <a href="#week">Your Week</a>
+      <a href="#ranks">Ranks</a>
+      <a href={ENLIST_URL} class="nav-cta">Enlist</a>
     </div>
   </nav>
 
@@ -81,27 +210,109 @@ const tiers = [
         width="520"
         height="520"
       />
-      <h1 class="hero-tagline">For the men still fighting in silence.</h1>
+      <h1 class="hero-tagline">
+        Therapy feels clinical.<br />
+        Brotherhood feels forced.<br />
+        <span class="hero-punch">We built the third thing.</span>
+      </h1>
       <p class="hero-sub">
-        A private brotherhood for the men carrying heartbreak, grief, loneliness, and childhood wounds.
-        The war you fight alone &mdash; you don&rsquo;t have to fight it alone anymore.
+        A cinematic brotherhood for the men carrying heartbreak, grief, and silence &mdash;
+        with the rituals, the brothers, and the licensed coaches you actually need.
       </p>
       <div class="hero-cta-row">
-        <a href={DISCORD_URL} class="btn btn-primary">Join the Brotherhood</a>
+        <a href={ENLIST_URL} class="btn btn-primary">Enlist Now</a>
         <a href="#war" class="btn">Read the Manifesto</a>
       </div>
       <div class="hero-scroll">SCROLL</div>
     </section>
 
+    <!-- THE WAR / PROBLEM -->
+    <section class="section war-section" id="war">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The War You’re Fighting</span>
+          <h2>What’s the silence<br />costing you?</h2>
+        </div>
+        <div class="war-grid">
+          {costs.map((c) => (
+            <div class="war-cost"><p>{c}</p></div>
+          ))}
+        </div>
+        <p class="war-close">
+          You don’t fix this alone. You haven’t been able to.<br />
+          It’s not your fault &mdash; it’s the math.<br />
+          <span>Pain divided by no one is just more pain.</span>
+        </p>
+      </div>
+    </section>
+
     <!-- MANIFESTO -->
-    <section class="manifesto" id="war">
+    <section class="manifesto" id="manifesto">
       <div class="container">
         <span class="eyebrow">The Manifesto</span>
         <p class="manifesto-text" style="margin-top: 32px;">
-          Some wars don&rsquo;t leave scars you can show.<br />
+          Some wars don’t leave scars you can show.<br />
           Some battles end with nobody knowing they were ever fought.<br />
           <span>This is for the men still fighting them.</span>
         </p>
+      </div>
+    </section>
+
+    <!-- PILLARS / WHAT'S INSIDE -->
+    <section class="section" id="pillars">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">3 Pillars / 15 Practices / 1 Brotherhood</span>
+          <h2>Everything inside.<br />Nothing wasted.</h2>
+          <p>
+            The Silent War isn’t a Discord with a paywall. It’s a system &mdash;
+            three pillars, fifteen practices, one brotherhood. Every channel,
+            every drop, every coach exists for one reason: men don’t heal alone.
+          </p>
+        </div>
+
+        <div class="pillars">
+          {pillars.map((p) => (
+            <div class="pillar">
+              <div class="pillar-tagline">{p.tagline}</div>
+              <h3 class="pillar-name">{p.name}</h3>
+              <ul class="practices">
+                {p.practices.map((pr) => (
+                  <li class="practice">
+                    <div class="practice-name">{pr.name}</div>
+                    <div class="practice-desc">{pr.desc}</div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- YOUR WEEK -->
+    <section class="section" id="week">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Rhythm</span>
+          <h2>Your week<br />inside the war.</h2>
+          <p>
+            Most men spiral because nothing structures them. The Silent War
+            structures them. A week becomes a rhythm. A rhythm becomes a life.
+          </p>
+        </div>
+
+        <div class="week">
+          {week.map((w) => (
+            <div class="week-row">
+              <div class="week-day">{w.day}</div>
+              <div class="week-detail">
+                <div class="week-name">{w.name}</div>
+                <div class="week-desc">{w.desc}</div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -113,7 +324,7 @@ const tiers = [
           <h2>The lines you<br />never said out loud.</h2>
           <p>
             Real overlays. Real men. Lines pulled from voice memos that were never sent
-            and diaries kept under the bed. If one of these hits &mdash; you&rsquo;re home.
+            and diaries kept under the bed. If one of these hits &mdash; you’re home.
           </p>
         </div>
       </div>
@@ -129,60 +340,63 @@ const tiers = [
       </div>
     </section>
 
-    <!-- BROTHERHOOD -->
-    <section class="section" id="brotherhood">
+    <!-- LETTERS FROM THE FRONT -->
+    <section class="section letters-section">
       <div class="container">
         <div class="section-head">
-          <span class="eyebrow">The Brotherhood</span>
-          <h2>A room of men<br />who finally get it.</h2>
+          <span class="eyebrow">Letters From The Front</span>
+          <h2>You’re not<br />the only one.</h2>
           <p>
-            The Silent War is not a self-help group. It&rsquo;s a brotherhood &mdash;
-            the homies you never had, on the other side of a screen, every night, when
-            it&rsquo;s quiet and the thoughts get loud.
+            Every Monday, an anonymous letter drops. From a brother, somewhere,
+            who’s in it too. Below: four of the latest. The full archive lives inside.
           </p>
         </div>
-
-        <div class="fragments">
-          <div class="fragment">
-            <p style="font-style: normal;">A vent space where nothing is too small.</p>
-            <div class="fragment-meta">#vent-space</div>
-          </div>
-          <div class="fragment">
-            <p style="font-style: normal;">Daily check-ins so no man disappears unnoticed.</p>
-            <div class="fragment-meta">#daily-check-in</div>
-          </div>
-          <div class="fragment">
-            <p style="font-style: normal;">A night room from 9PM to midnight, when it hits hardest.</p>
-            <div class="fragment-meta">#night-room</div>
-          </div>
-          <div class="fragment">
-            <p style="font-style: normal;">Reels, audios, and prompts &mdash; for when words won&rsquo;t come.</p>
-            <div class="fragment-meta">#free-resources</div>
-          </div>
-        </div>
-
-        <div style="text-align: center; margin-top: 64px;">
-          <a href={DISCORD_URL} class="btn btn-primary">Walk Into the Room</a>
+        <div class="letters">
+          {letters.map((l) => (
+            <div class="letter">
+              <p class="letter-body">&ldquo;{l.body}&rdquo;</p>
+              <div class="letter-sender">&mdash; {l.sender}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
-    <!-- TIERS -->
-    <section class="section" id="tiers">
+    <!-- RANKS / TIERS -->
+    <section class="section" id="ranks">
       <div class="container">
         <div class="section-head">
           <span class="eyebrow">The Ranks</span>
-          <h2>Start where<br />you&rsquo;re standing.</h2>
+          <h2>Three doors.<br />The first one’s open.</h2>
           <p>
-            Three doors. The first one&rsquo;s open. The other two are for the men who
-            want to go deeper &mdash; into work, into healing, into the kind of life
-            they thought they&rsquo;d already lost.
+            Recon is free. Brothers’ Circle is for the men who want a rhythm.
+            Silent Army is for the men who want the support stack.
+            Silent Officer is for the men who want all of it, plus eyes on them.
           </p>
+        </div>
+
+        <!-- Free tier inline -->
+        <div class="recon">
+          <div class="recon-head">
+            <span class="eyebrow">Free Tier</span>
+            <h3>Recon &mdash; $0</h3>
+          </div>
+          <div class="recon-body">
+            <p>The open door. No card. No commitment.</p>
+            <ul>
+              <li>Vent space + daily check-ins</li>
+              <li>Letters From The Front (weekly)</li>
+              <li>Reels and content library</li>
+              <li>Welcome / start-here guide</li>
+            </ul>
+            <a href={ENLIST_URL} class="btn">Walk Through</a>
+          </div>
         </div>
 
         <div class="tiers">
           {tiers.map((tier) => (
             <div class={`tier ${tier.featured ? 'tier-featured' : ''}`}>
+              {tier.featured && <div class="tier-badge">Most Enlist</div>}
               <div class="tier-name">{tier.name}</div>
               <div class="tier-tagline">{tier.tagline}</div>
               <div class="tier-price">
@@ -192,9 +406,43 @@ const tiers = [
               <ul>
                 {tier.features.map((f) => (<li>{f}</li>))}
               </ul>
-              <a href={DISCORD_URL} class={`btn ${tier.featured ? 'btn-primary' : ''}`}>{tier.cta}</a>
+              <a href={ENLIST_URL} class={`btn ${tier.featured ? 'btn-primary' : ''}`}>{tier.cta}</a>
             </div>
           ))}
+        </div>
+
+        <p class="ranks-footnote">
+          Plus: clinical referral network for members in crisis. We’ll route you to
+          a vetted licensed therapist via our partners (Grow Therapy, Alma). No platform
+          replaces real care. We’ll make sure you find it.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHO THIS IS FOR / NOT FOR -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Qualification</span>
+          <h2>Read this first.</h2>
+          <p>
+            We’re not for everybody. We’d rather you self-select than churn out at month two.
+          </p>
+        </div>
+
+        <div class="who-for">
+          <div class="who-col">
+            <div class="who-label">For</div>
+            <ul>
+              {forList.map((item) => (<li>{item}</li>))}
+            </ul>
+          </div>
+          <div class="who-col who-not">
+            <div class="who-label">Not For</div>
+            <ul>
+              {notForList.map((item) => (<li>{item}</li>))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -207,7 +455,7 @@ const tiers = [
           <h2>Save lives.<br />Get paid for it.</h2>
           <p>
             Every man you bring through the door is a war you helped end. Drop your
-            story. Get your own invite link. Earn when men heal.
+            story. Get your own invite link. Earn 20% recurring when men heal.
           </p>
           <div class="ambassador-stats">
             <div>
@@ -228,16 +476,37 @@ const tiers = [
       </div>
     </section>
 
-    <!-- JOIN -->
-    <section class="join" id="join">
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Things men ask<br />before they show up.</h2>
+        </div>
+        <div class="faq">
+          {faqs.map((item) => (
+            <details class="faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ENLIST / FINAL CTA -->
+    <section class="join" id="enlist">
       <div class="container">
         <span class="eyebrow">The Door is Open</span>
-        <h2>You don&rsquo;t<br />fight alone.</h2>
+        <h2>You don’t<br />fight alone.</h2>
         <p>
-          Step into the brotherhood. Free to join. No judgment, no fixing,
-          just men who&rsquo;ve been where you are.
+          Step into the brotherhood. Recon is free. The room is always open.
+          The men inside have been where you are.
         </p>
-        <a href={DISCORD_URL} class="btn btn-primary">Enter the Brotherhood</a>
+        <a href={ENLIST_URL} class="btn btn-primary">Enlist Now</a>
+        <p class="join-meta">
+          Or DM <a href={INSTAGRAM_URL} target="_blank" rel="noopener">@silentwar.community</a> on Instagram.
+        </p>
       </div>
     </section>
 
@@ -247,7 +516,7 @@ const tiers = [
         <div class="footer-brand">The Silent War</div>
         <div class="footer-links">
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a>
-          <a href={DISCORD_URL}>Discord</a>
+          <a href={ENLIST_URL}>Enlist</a>
           <a href={`mailto:${EMAIL}`}>Contact</a>
         </div>
         <div class="footer-meta">silentwar.community &middot; &copy; 2026</div>
