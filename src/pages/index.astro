@@ -1,0 +1,257 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const DISCORD_URL = '#join';
+const INSTAGRAM_URL = 'https://instagram.com/silentwar.community';
+const EMAIL = 'silentwarcommunity@gmail.com';
+
+const fragments = [
+  { text: 'She left, and I had to rewire everything I thought love was.', meta: 'Fragment 01' },
+  { text: 'Nobody noticed I disappeared. That\u2019s how I knew.', meta: 'Fragment 02' },
+  { text: 'You don\u2019t even want her back. You just want the chaos to stop.', meta: 'Fragment 03' },
+  { text: 'The hardest part wasn\u2019t losing her. It was meeting the man I became without her.', meta: 'Fragment 04' },
+  { text: 'I learned to smile in rooms where I was breaking apart.', meta: 'Fragment 05' },
+  { text: 'I wasn\u2019t weak. I just had nobody to tell.', meta: 'Fragment 06' },
+];
+
+const tiers = [
+  {
+    name: 'Free Community',
+    tagline: 'Open Door',
+    price: '$0',
+    period: '',
+    featured: false,
+    cta: 'Walk Through',
+    features: [
+      'Vent space + daily check-ins',
+      'Reels, scripts, and free resources',
+      'A room of brothers, no judgment',
+      'Start-here guide + welcome',
+    ],
+  },
+  {
+    name: "Brothers' Circle",
+    tagline: 'Inner Room',
+    price: '$25',
+    period: '/month',
+    featured: true,
+    cta: 'Step In',
+    features: [
+      'Weekly group calls',
+      'Journaling prompts + guided audio',
+      'Private chat with the brothers',
+      'Exclusive guides & drops',
+    ],
+  },
+  {
+    name: 'Silent Army',
+    tagline: 'Front Line',
+    price: '$50',
+    period: '/month',
+    featured: false,
+    cta: 'Enlist',
+    features: [
+      '1-on-1 mentorship & coaching',
+      'Lifestyle Lab access',
+      'Behind-the-war footage',
+      'Exclusive product drops',
+    ],
+  },
+];
+---
+
+<Layout>
+  <nav class="nav">
+    <a href="#top" class="nav-brand">The Silent War</a>
+    <div class="nav-links">
+      <a href="#war">The War</a>
+      <a href="#brotherhood">Brotherhood</a>
+      <a href="#tiers">Ranks</a>
+      <a href="#join">Join</a>
+    </div>
+  </nav>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <img
+        src="/silent-war-logo.png"
+        alt="The Silent War"
+        class="hero-logo"
+        width="520"
+        height="520"
+      />
+      <h1 class="hero-tagline">For the men still fighting in silence.</h1>
+      <p class="hero-sub">
+        A private brotherhood for the men carrying heartbreak, grief, loneliness, and childhood wounds.
+        The war you fight alone &mdash; you don&rsquo;t have to fight it alone anymore.
+      </p>
+      <div class="hero-cta-row">
+        <a href={DISCORD_URL} class="btn btn-primary">Join the Brotherhood</a>
+        <a href="#war" class="btn">Read the Manifesto</a>
+      </div>
+      <div class="hero-scroll">SCROLL</div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" id="war">
+      <div class="container">
+        <span class="eyebrow">The Manifesto</span>
+        <p class="manifesto-text" style="margin-top: 32px;">
+          Some wars don&rsquo;t leave scars you can show.<br />
+          Some battles end with nobody knowing they were ever fought.<br />
+          <span>This is for the men still fighting them.</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- FRAGMENTS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Fragments</span>
+          <h2>The lines you<br />never said out loud.</h2>
+          <p>
+            Real overlays. Real men. Lines pulled from voice memos that were never sent
+            and diaries kept under the bed. If one of these hits &mdash; you&rsquo;re home.
+          </p>
+        </div>
+      </div>
+      <div class="container">
+        <div class="fragments">
+          {fragments.map((f) => (
+            <div class="fragment">
+              <p>&ldquo;{f.text}&rdquo;</p>
+              <div class="fragment-meta">{f.meta}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- BROTHERHOOD -->
+    <section class="section" id="brotherhood">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Brotherhood</span>
+          <h2>A room of men<br />who finally get it.</h2>
+          <p>
+            The Silent War is not a self-help group. It&rsquo;s a brotherhood &mdash;
+            the homies you never had, on the other side of a screen, every night, when
+            it&rsquo;s quiet and the thoughts get loud.
+          </p>
+        </div>
+
+        <div class="fragments">
+          <div class="fragment">
+            <p style="font-style: normal;">A vent space where nothing is too small.</p>
+            <div class="fragment-meta">#vent-space</div>
+          </div>
+          <div class="fragment">
+            <p style="font-style: normal;">Daily check-ins so no man disappears unnoticed.</p>
+            <div class="fragment-meta">#daily-check-in</div>
+          </div>
+          <div class="fragment">
+            <p style="font-style: normal;">A night room from 9PM to midnight, when it hits hardest.</p>
+            <div class="fragment-meta">#night-room</div>
+          </div>
+          <div class="fragment">
+            <p style="font-style: normal;">Reels, audios, and prompts &mdash; for when words won&rsquo;t come.</p>
+            <div class="fragment-meta">#free-resources</div>
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 64px;">
+          <a href={DISCORD_URL} class="btn btn-primary">Walk Into the Room</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- TIERS -->
+    <section class="section" id="tiers">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Ranks</span>
+          <h2>Start where<br />you&rsquo;re standing.</h2>
+          <p>
+            Three doors. The first one&rsquo;s open. The other two are for the men who
+            want to go deeper &mdash; into work, into healing, into the kind of life
+            they thought they&rsquo;d already lost.
+          </p>
+        </div>
+
+        <div class="tiers">
+          {tiers.map((tier) => (
+            <div class={`tier ${tier.featured ? 'tier-featured' : ''}`}>
+              <div class="tier-name">{tier.name}</div>
+              <div class="tier-tagline">{tier.tagline}</div>
+              <div class="tier-price">
+                {tier.price}<span>{tier.period}</span>
+              </div>
+              <div class="tier-divider"></div>
+              <ul>
+                {tier.features.map((f) => (<li>{f}</li>))}
+              </ul>
+              <a href={DISCORD_URL} class={`btn ${tier.featured ? 'btn-primary' : ''}`}>{tier.cta}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- AMBASSADOR -->
+    <section class="section">
+      <div class="container">
+        <div class="ambassador">
+          <span class="eyebrow">Ambassador Program</span>
+          <h2>Save lives.<br />Get paid for it.</h2>
+          <p>
+            Every man you bring through the door is a war you helped end. Drop your
+            story. Get your own invite link. Earn when men heal.
+          </p>
+          <div class="ambassador-stats">
+            <div>
+              <div class="stat-num">20%</div>
+              <div class="stat-label">Recurring</div>
+            </div>
+            <div>
+              <div class="stat-num">&infin;</div>
+              <div class="stat-label">Brothers Saved</div>
+            </div>
+            <div>
+              <div class="stat-num">$0</div>
+              <div class="stat-label">To Start</div>
+            </div>
+          </div>
+          <a href={`mailto:${EMAIL}?subject=Ambassador%20Program`} class="btn">Drop Your Story</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOIN -->
+    <section class="join" id="join">
+      <div class="container">
+        <span class="eyebrow">The Door is Open</span>
+        <h2>You don&rsquo;t<br />fight alone.</h2>
+        <p>
+          Step into the brotherhood. Free to join. No judgment, no fixing,
+          just men who&rsquo;ve been where you are.
+        </p>
+        <a href={DISCORD_URL} class="btn btn-primary">Enter the Brotherhood</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">The Silent War</div>
+        <div class="footer-links">
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a>
+          <a href={DISCORD_URL}>Discord</a>
+          <a href={`mailto:${EMAIL}`}>Contact</a>
+        </div>
+        <div class="footer-meta">silentwar.community &middot; &copy; 2026</div>
+      </div>
+    </footer>
+  </main>
+</Layout>
