@@ -185,6 +185,43 @@ const faqs = [
     q: 'Is this only for men?',
     a: 'Yes. The Silent War exists because men, statistically and culturally, suffer alone. We’re built to fix that for them. Other communities exist for everyone else.',
   },
+  {
+    q: 'Will anyone know I’m here?',
+    a: 'No. You join with any name you choose. Other members never see your real name, your email, or your payment info — just your handle and avatar. Whop’s anti-doxxing rules back this up. The Code makes it sacred.',
+  },
+];
+
+const steps = [
+  {
+    n: '01',
+    title: 'Choose Your Name',
+    desc: 'Pick anything. Initials. A handle. A character. The brotherhood doesn’t need to know who you are. Only that you showed up.',
+  },
+  {
+    n: '02',
+    title: 'Walk Into the Room',
+    desc: 'The Night Room is always open. The vent space is always listening. Lurk first. Speak when you’re ready. Nobody pushes.',
+  },
+  {
+    n: '03',
+    title: 'Find Your Brothers',
+    desc: 'A vet pairs with you. The 30-day path lights up. The rituals begin. Slowly. The rest becomes rhythm.',
+  },
+];
+
+const codeRules = [
+  { n: '01', rule: 'Anonymity is sacred.', desc: 'No screenshots. No DMing names outside the room. What you saw stays.' },
+  { n: '02', rule: 'Vent before fix.', desc: 'We don’t solve. We listen. Solutions come when they’re asked for.' },
+  { n: '03', rule: 'Hold the brothers who held you.', desc: 'When a brother shows up for you, show up back. The brotherhood is a debt you pay forward.' },
+  { n: '04', rule: 'In crisis, say it.', desc: 'No code words. No shame. We’ll point you at help. Then we’ll be here when you’re back.' },
+  { n: '05', rule: 'No politics. No sides. No debates.', desc: 'We’re here for one war. The internal one. Everything else stays outside.' },
+];
+
+const crisisLines = [
+  { region: 'United States', line: 'Call or text 988 — Suicide & Crisis Lifeline', url: 'https://988lifeline.org' },
+  { region: 'United States · Text', line: 'Text HOME to 741741 — Crisis Text Line', url: 'https://www.crisistextline.org' },
+  { region: 'United Kingdom', line: 'Call 116 123 — Samaritans', url: 'https://www.samaritans.org' },
+  { region: 'International', line: 'Find a helpline in your country', url: 'https://findahelpline.com' },
 ];
 ---
 
@@ -223,6 +260,13 @@ const faqs = [
         <a href={ENLIST_URL} class="btn btn-primary">Enlist Now</a>
         <a href="#war" class="btn">Read the Manifesto</a>
       </div>
+      <div class="signal-block">
+        <span>Anonymous</span>
+        <span class="dot">·</span>
+        <span>Always Open</span>
+        <span class="dot">·</span>
+        <span>Moderated</span>
+      </div>
       <div class="hero-scroll">SCROLL</div>
     </section>
 
@@ -255,6 +299,32 @@ const faqs = [
           Some battles end with nobody knowing they were ever fought.<br />
           <span>This is for the men still fighting them.</span>
         </p>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section how-section" id="how">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How You Walk In</span>
+          <h2>Anonymous.<br />Always open.<br />No face required.</h2>
+          <p>
+            Most men don’t join because they’re afraid of being seen. So we built
+            this so you don’t have to be. Use any name. Show no face. Other members
+            never see your real name, your email, or your payment info — just the
+            handle you choose and the avatar you pick. The Code keeps it that way.
+          </p>
+        </div>
+
+        <div class="steps">
+          {steps.map((s) => (
+            <div class="step">
+              <div class="step-num">{s.n}</div>
+              <div class="step-title">{s.title}</div>
+              <div class="step-desc">{s.desc}</div>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -447,6 +517,32 @@ const faqs = [
       </div>
     </section>
 
+    <!-- THE CODE -->
+    <section class="section code-section" id="code">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Code</span>
+          <h2>What you bring stays.<br />What you say is held.<br />What you hear, you hold.</h2>
+          <p>
+            The brotherhood works because the code holds. Five rules. Break any
+            of them and you’re out. The room is sacred because we keep it that way.
+          </p>
+        </div>
+
+        <ol class="code-rules">
+          {codeRules.map((r) => (
+            <li class="code-rule">
+              <span class="code-num">{r.n}</span>
+              <div>
+                <div class="code-rule-text">{r.rule}</div>
+                <div class="code-rule-desc">{r.desc}</div>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
     <!-- AMBASSADOR -->
     <section class="section">
       <div class="container">
@@ -490,6 +586,28 @@ const faqs = [
               <p>{item.a}</p>
             </details>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CRISIS RESOURCES -->
+    <section class="section crisis-section" id="crisis">
+      <div class="container">
+        <div class="crisis-card">
+          <span class="eyebrow">If You’re In Crisis Right Now</span>
+          <p class="crisis-lead">
+            The Silent War is brotherhood, not crisis intervention. If you’re not
+            safe right now, please reach out to professionals first. Then come
+            back when you are. The room will still be here.
+          </p>
+          <ul class="crisis-list">
+            {crisisLines.map((c) => (
+              <li class="crisis-line">
+                <span class="crisis-region">{c.region}</span>
+                <a href={c.url} target="_blank" rel="noopener">{c.line}</a>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>
