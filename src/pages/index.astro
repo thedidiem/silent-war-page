@@ -3,7 +3,12 @@ import Layout from '../layouts/Layout.astro';
 
 const EMAIL = 'silentwarcommunity@gmail.com';
 const INSTAGRAM_URL = 'https://instagram.com/silentwar.community';
-const ENLIST_URL = `mailto:${EMAIL}?subject=Enlist&body=I%20want%20in.`;
+const WHOP_BASE = 'https://whop.com/silent-war';
+const ENLIST_URL = `${WHOP_BASE}/`;
+const URL_RECON = `${WHOP_BASE}/recon-d7/`;
+const URL_BROTHERS = `${WHOP_BASE}/brothers-circle/`;
+const URL_ARMY = `${WHOP_BASE}/silent-army/`;
+const URL_OFFICER = `${WHOP_BASE}/silent-officer/`;
 
 const costs = [
   'The hours you can’t sleep.',
@@ -95,6 +100,7 @@ const tiers = [
     period: '/month',
     featured: false,
     cta: 'Step In',
+    url: URL_BROTHERS,
     features: [
       'Everything in Recon (free tier)',
       'Weekly facilitated brotherhood circle (8–12 men)',
@@ -112,6 +118,7 @@ const tiers = [
     period: '/month',
     featured: true,
     cta: 'Enlist',
+    url: URL_ARMY,
     features: [
       'Everything in Brothers’ Circle',
       'Monthly Office Hours with licensed coaches',
@@ -130,6 +137,7 @@ const tiers = [
     period: '/month',
     featured: false,
     cta: 'Take Command',
+    url: URL_OFFICER,
     features: [
       'Everything in Silent Army',
       '2x/month 1-on-1 with a vetted men-trained coach',
@@ -233,7 +241,7 @@ const crisisLines = [
       <a href="#pillars">Inside</a>
       <a href="#week">Your Week</a>
       <a href="#ranks">Ranks</a>
-      <a href={ENLIST_URL} class="nav-cta">Enlist</a>
+      <a href={ENLIST_URL} target="_blank" rel="noopener" class="nav-cta">Enlist</a>
     </div>
   </nav>
 
@@ -257,7 +265,7 @@ const crisisLines = [
         with the rituals, the brothers, and the licensed coaches you actually need.
       </p>
       <div class="hero-cta-row">
-        <a href={ENLIST_URL} class="btn btn-primary">Enlist Now</a>
+        <a href={ENLIST_URL} target="_blank" rel="noopener" class="btn btn-primary">Enlist Now</a>
         <a href="#war" class="btn">Read the Manifesto</a>
       </div>
       <div class="signal-block">
@@ -459,7 +467,7 @@ const crisisLines = [
               <li>Reels and content library</li>
               <li>Welcome / start-here guide</li>
             </ul>
-            <a href={ENLIST_URL} class="btn">Walk Through</a>
+            <a href={URL_RECON} target="_blank" rel="noopener" class="btn">Walk Through</a>
           </div>
         </div>
 
@@ -476,7 +484,7 @@ const crisisLines = [
               <ul>
                 {tier.features.map((f) => (<li>{f}</li>))}
               </ul>
-              <a href={ENLIST_URL} class={`btn ${tier.featured ? 'btn-primary' : ''}`}>{tier.cta}</a>
+              <a href={tier.url} target="_blank" rel="noopener" class={`btn ${tier.featured ? 'btn-primary' : ''}`}>{tier.cta}</a>
             </div>
           ))}
         </div>
@@ -621,7 +629,7 @@ const crisisLines = [
           Step into the brotherhood. Recon is free. The room is always open.
           The men inside have been where you are.
         </p>
-        <a href={ENLIST_URL} class="btn btn-primary">Enlist Now</a>
+        <a href={ENLIST_URL} target="_blank" rel="noopener" class="btn btn-primary">Enlist Now</a>
         <p class="join-meta">
           Or DM <a href={INSTAGRAM_URL} target="_blank" rel="noopener">@silentwar.community</a> on Instagram.
         </p>
@@ -634,7 +642,7 @@ const crisisLines = [
         <div class="footer-brand">The Silent War</div>
         <div class="footer-links">
           <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a>
-          <a href={ENLIST_URL}>Enlist</a>
+          <a href={ENLIST_URL} target="_blank" rel="noopener">Enlist</a>
           <a href={`mailto:${EMAIL}`}>Contact</a>
         </div>
         <div class="footer-meta">silentwar.community &middot; &copy; 2026</div>
