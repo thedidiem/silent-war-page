@@ -1,0 +1,231 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const EMAIL = 'silentwarcommunity@gmail.com';
+const INSTAGRAM_URL = 'https://instagram.com/silentwar.community';
+const NOTIFY_URL = `mailto:${EMAIL}?subject=Notify%20me%20when%20Reset%20Protocol%20launches&body=I%20want%20in%20when%20The%20Reset%20Protocol%20goes%20live.`;
+
+const oss = [
+  {
+    name: 'The Reset Protocol',
+    tagline: 'Your week, with a spine.',
+    desc: 'For the man whose mind is scattered, whose week has no shape, and whose mornings start with a scroll. Three rituals. One rhythm. The Sunday Reset, the Daily Anchor, the Mind Dump.',
+    status: 'live',
+    price: '$17',
+    crossed: '$27',
+    cta: 'Notify me when it drops',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Mental Vault',
+    tagline: 'Somewhere to put the noise at 2 AM.',
+    desc: 'Second-brain system built for grief, processing, and clarity — not productivity bro nonsense. Your head isn\u2019t the only place these thoughts can live.',
+    status: 'soon',
+    price: '$17',
+    crossed: '$27',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Body Keeps the Score',
+    tagline: 'Track sleep, mood, training. Because pain lives there too.',
+    desc: 'Sleep, training, food, mood, libido — tracked daily. No PR fixation. No diet logic. Just the data your body has been trying to tell you for years.',
+    status: 'soon',
+    price: '$17',
+    crossed: '$27',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Stability System',
+    tagline: 'Money, without the shame.',
+    desc: 'You\u2019re not broke because you\u2019re broken. The Stability System gives you the basics \u2014 quietly, without the hustle-bro performative wealth talk.',
+    status: 'soon',
+    price: '$17',
+    crossed: '$27',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Pilgrimage',
+    tagline: 'When you need to disappear to come back to yourself.',
+    desc: 'Solo trip planning system. The flight, the cabin, the 3-day silent retreat. Built for the trip that isn\u2019t a vacation \u2014 it\u2019s a return.',
+    status: 'soon',
+    price: '$17',
+    crossed: '$27',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Letter Engine',
+    tagline: 'Turn what you\u2019ve lived through into something worth saying.',
+    desc: 'The system for writing the letters that save other men. Your worst chapters, formatted as flags for the brother behind you.',
+    status: 'soon',
+    price: '$27',
+    crossed: '$37',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+  {
+    name: 'The Rebuild',
+    tagline: 'For the man starting over. From wreckage to roadmap.',
+    desc: '90-day life reconstruction. The most complete system in the suite. For divorce, career collapse, addiction recovery, midlife reckoning. The man you\u2019re becoming \u2014 not the one you were.',
+    status: 'soon',
+    price: '$27',
+    crossed: '$37',
+    cta: 'Coming soon',
+    url: NOTIFY_URL,
+  },
+];
+
+const bundles = [
+  { name: 'The Standard Stack', oss: '3 OSs', price: '$39', crossed: '$51', cta: 'Notify me' },
+  { name: 'The Soldier Stack', oss: '5 OSs', price: '$69', crossed: '$95', cta: 'Notify me' },
+  { name: 'The Officer Stack', oss: 'All 7 OSs', price: '$99', crossed: '$143', cta: 'Notify me' },
+];
+---
+
+<Layout title="Templates — The Silent War" description="7 cinematic Notion systems for the men still fighting in silence. Heartbreak. Grief. Discipline. Rebuild.">
+  <nav class="nav">
+    <a href="/" class="nav-brand">The Silent War</a>
+    <div class="nav-links">
+      <a href="/templates">Templates</a>
+      <a href="/#war">The War</a>
+      <a href="/#ranks">Brotherhood</a>
+      <a href={NOTIFY_URL} class="nav-cta">Notify Me</a>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero" style="min-height: 70vh;">
+      <span class="eyebrow">Templates</span>
+      <h1 class="hero-tagline" style="margin-top: 24px;">
+        Systems for the men<br />
+        still fighting in silence.
+      </h1>
+      <p class="hero-sub">
+        7 cinematic Notion templates &mdash; built for heartbreak, grief, discipline, rebuild.
+        Drop them into your Notion. Use them tomorrow. Built like the brotherhood, not like a productivity bro.
+      </p>
+      <div class="hero-cta-row">
+        <a href={NOTIFY_URL} class="btn btn-primary">Notify Me When They Drop</a>
+        <a href="#oss" class="btn">See All 7</a>
+      </div>
+    </section>
+
+    <!-- THE 7 OSs -->
+    <section class="section" id="oss">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">The Suite</span>
+          <h2>7 Systems.<br />One Brotherhood.</h2>
+          <p>
+            Each one solves a specific war &mdash; the one in your head, your body, your money, your week.
+            Use them alone. Stack them together. They evolve as you do.
+          </p>
+        </div>
+
+        <div class="os-grid">
+          {oss.map((os) => (
+            <div class={`os-card ${os.status === 'live' ? 'os-live' : 'os-soon'}`}>
+              <div class="os-status">{os.status === 'live' ? 'LAUNCHING SOON' : 'COMING SOON'}</div>
+              <h3 class="os-name">{os.name}</h3>
+              <p class="os-tagline">{os.tagline}</p>
+              <p class="os-desc">{os.desc}</p>
+              <div class="os-footer">
+                <div class="os-price">
+                  <span class="os-price-old">{os.crossed}</span>
+                  <span class="os-price-new">{os.price}</span>
+                </div>
+                <a href={os.url} class={`btn ${os.status === 'live' ? 'btn-primary' : ''}`}>{os.cta}</a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- BUNDLES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Bundles</span>
+          <h2>Stack the war.<br />Save the cost.</h2>
+          <p>
+            Buy the systems together. The full suite is 40%+ off the individual price.
+            Bundles drop after the first 3 OSs are live.
+          </p>
+        </div>
+        <div class="bundle-grid">
+          {bundles.map((b) => (
+            <div class="bundle-card">
+              <h3 class="bundle-name">{b.name}</h3>
+              <div class="bundle-content">{b.oss}</div>
+              <div class="bundle-price">
+                <span class="os-price-old">{b.crossed}</span>
+                <span class="os-price-new">{b.price}</span>
+              </div>
+              <a href={NOTIFY_URL} class="btn">{b.cta}</a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">How It Works</span>
+          <h2>Drop into Notion.<br />Use it tomorrow.</h2>
+        </div>
+        <div class="how-grid">
+          <div class="how-step">
+            <div class="how-num">01</div>
+            <h3>Buy</h3>
+            <p>One-time purchase. No subscription. No upsell maze.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-num">02</div>
+            <h3>Duplicate</h3>
+            <p>One click into your Notion. Yours forever. No login. No DRM.</p>
+          </div>
+          <div class="how-step">
+            <div class="how-num">03</div>
+            <h3>Use</h3>
+            <p>Tomorrow morning at your kitchen table. Or tonight at 2 AM, when it gets loud.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="join">
+      <div class="container">
+        <span class="eyebrow">First in line</span>
+        <h2>The Reset Protocol<br />drops first.</h2>
+        <p>Drop your email. We&rsquo;ll send the link the moment it goes live. No spam. One email. The launch.</p>
+        <a href={NOTIFY_URL} class="btn btn-primary">Notify Me</a>
+        <p class="join-meta">
+          Or follow <a href={INSTAGRAM_URL} target="_blank" rel="noopener">@silentwar.community</a> on Instagram.
+        </p>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-brand">The Silent War</div>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/templates">Templates</a>
+          <a href={INSTAGRAM_URL} target="_blank" rel="noopener">Instagram</a>
+          <a href={`mailto:${EMAIL}`}>Contact</a>
+        </div>
+        <div class="footer-meta">silentwar.community &middot; &copy; 2026</div>
+      </div>
+    </footer>
+  </main>
+</Layout>

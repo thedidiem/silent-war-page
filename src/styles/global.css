@@ -561,6 +561,191 @@ img { display: block; max-width: 100%; height: auto; }
   .crisis-card { padding: 32px 24px; }
 }
 
+/* TEMPLATES PAGE */
+.os-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+.os-card {
+  border: 1px solid var(--line-strong);
+  padding: 36px 32px;
+  background: var(--bg-2);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+.os-card:hover {
+  border-color: var(--ink);
+  transform: translateY(-4px);
+}
+.os-live {
+  border-color: var(--ink);
+  background: linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 100%);
+}
+.os-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  color: var(--ink-faint);
+  margin-bottom: 16px;
+}
+.os-live .os-status { color: var(--ink); }
+.os-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 32px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+.os-tagline {
+  font-size: 15px;
+  color: var(--ink);
+  font-style: italic;
+  margin-bottom: 16px;
+}
+.os-desc {
+  font-size: 14px;
+  color: var(--ink-dim);
+  line-height: 1.55;
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+.os-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+.os-price {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.os-price-old {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--ink-faint);
+  text-decoration: line-through;
+}
+.os-price-new {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  color: var(--ink);
+}
+.os-card .btn {
+  padding: 10px 18px;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+}
+
+/* BUNDLES */
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--line);
+}
+.bundle-card {
+  background: var(--bg);
+  padding: 40px 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.3s ease;
+}
+.bundle-card:hover { background: var(--bg-2); }
+.bundle-name {
+  font-family: 'Anton', sans-serif;
+  font-size: 28px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.bundle-content {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+.bundle-price {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+/* HOW IT WORKS */
+.how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+.how-step {
+  text-align: center;
+  padding: 32px 16px;
+}
+.how-num {
+  font-family: 'Anton', sans-serif;
+  font-size: 64px;
+  color: var(--ink-faint);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.how-step h3 {
+  font-family: 'Anton', sans-serif;
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  letter-spacing: 0.04em;
+}
+.how-step p {
+  color: var(--ink-dim);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+/* HOMEPAGE TEMPLATES BANNER */
+.templates-banner {
+  background: linear-gradient(90deg, var(--bg-2) 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  padding: 24px;
+  text-align: center;
+}
+.templates-banner-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.templates-banner-text {
+  font-family: 'Anton', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.templates-banner a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-dim);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.templates-banner a:hover { color: var(--ink); }
+
 /* HERO PUNCH (the "we built the third thing" line) */
 .hero-punch {
   display: block;
