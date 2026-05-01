@@ -14,8 +14,9 @@ const oss = [
     status: 'live',
     price: '$17',
     crossed: '$27',
-    cta: 'Buy on Gumroad',
+    cta: 'Buy on Whop',
     url: DISCIPLINE_SYSTEM_URL,
+    hero: '/heroes/the_discipline_system_ig.png',
   },
   {
     name: 'The Mental Vault',
@@ -26,6 +27,7 @@ const oss = [
     crossed: '$27',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_mental_vault_ig.png',
   },
   {
     name: 'The Body Keeps the Score',
@@ -36,6 +38,7 @@ const oss = [
     crossed: '$27',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_body_keeps_the_score_ig.png',
   },
   {
     name: 'The Stability System',
@@ -46,6 +49,7 @@ const oss = [
     crossed: '$27',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_stability_system_ig.png',
   },
   {
     name: 'The Pilgrimage',
@@ -56,6 +60,7 @@ const oss = [
     crossed: '$27',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_pilgrimage_ig.png',
   },
   {
     name: 'The Letter Engine',
@@ -66,6 +71,7 @@ const oss = [
     crossed: '$37',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_letter_engine_ig.png',
   },
   {
     name: 'The Rebuild',
@@ -76,6 +82,7 @@ const oss = [
     crossed: '$37',
     cta: 'Coming soon',
     url: NOTIFY_URL,
+    hero: '/heroes/the_rebuild_ig.png',
   },
 ];
 
@@ -131,16 +138,23 @@ const bundles = [
         <div class="os-grid">
           {oss.map((os) => (
             <div class={`os-card ${os.status === 'live' ? 'os-live' : 'os-soon'}`}>
-              <div class="os-status">{os.status === 'live' ? 'LIVE NOW' : 'COMING SOON'}</div>
-              <h3 class="os-name">{os.name}</h3>
-              <p class="os-tagline">{os.tagline}</p>
-              <p class="os-desc">{os.desc}</p>
-              <div class="os-footer">
-                <div class="os-price">
-                  <span class="os-price-old">{os.crossed}</span>
-                  <span class="os-price-new">{os.price}</span>
+              {os.hero && (
+                <div class="os-hero">
+                  <img src={os.hero} alt={`${os.name} preview`} loading="lazy" />
                 </div>
-                <a href={os.url} target={os.status === 'live' ? '_blank' : '_self'} rel={os.status === 'live' ? 'noopener' : ''} class={`btn ${os.status === 'live' ? 'btn-primary' : ''}`}>{os.cta}</a>
+              )}
+              <div class="os-card-body">
+                <div class="os-status">{os.status === 'live' ? 'LIVE NOW' : 'COMING SOON'}</div>
+                <h3 class="os-name">{os.name}</h3>
+                <p class="os-tagline">{os.tagline}</p>
+                <p class="os-desc">{os.desc}</p>
+                <div class="os-footer">
+                  <div class="os-price">
+                    <span class="os-price-old">{os.crossed}</span>
+                    <span class="os-price-new">{os.price}</span>
+                  </div>
+                  <a href={os.url} target={os.status === 'live' ? '_blank' : '_self'} rel={os.status === 'live' ? 'noopener' : ''} class={`btn ${os.status === 'live' ? 'btn-primary' : ''}`}>{os.cta}</a>
+                </div>
               </div>
             </div>
           ))}
